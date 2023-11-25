@@ -4252,19 +4252,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\shawn.zhang32\\.nuget\\packages\\": {}
+    "C:\\Users\\joey_\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\shawn.zhang32\\Git\\2023tdd\\2023TDD\\2023TDD\\2023TDD.csproj",
+      "projectUniqueName": "C:\\Users\\joey_\\RiderProjects\\202311-tdd-not-training\\TDD2023-team3\\2023TDD\\2023TDD\\2023TDD.csproj",
       "projectName": "2023TDD",
-      "projectPath": "C:\\Users\\shawn.zhang32\\Git\\2023tdd\\2023TDD\\2023TDD\\2023TDD.csproj",
-      "packagesPath": "C:\\Users\\shawn.zhang32\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\shawn.zhang32\\Git\\2023tdd\\2023TDD\\2023TDD\\obj\\",
+      "projectPath": "C:\\Users\\joey_\\RiderProjects\\202311-tdd-not-training\\TDD2023-team3\\2023TDD\\2023TDD\\2023TDD.csproj",
+      "packagesPath": "C:\\Users\\joey_\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\joey_\\RiderProjects\\202311-tdd-not-training\\TDD2023-team3\\2023TDD\\2023TDD\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\shawn.zhang32\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\joey_\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -4272,7 +4272,6 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "http://nuget.coreop.net/nuget/": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -4326,7 +4325,8 @@
           "net47",
           "net471",
           "net472",
-          "net48"
+          "net48",
+          "net481"
         ],
         "assetTargetFallback": true,
         "warn": true,
@@ -4335,16 +4335,8 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.203\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1803",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "You are running the 'restore' operation with an 'HTTP' source, 'http://nuget.coreop.net/nuget/'. Non-HTTPS access will be removed in a future version. Consider migrating to an 'HTTPS' source."
-    }
-  ]
+  }
 }

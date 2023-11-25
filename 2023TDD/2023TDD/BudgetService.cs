@@ -41,22 +41,25 @@ public class BudgetService
             var budget = budgets.FirstOrDefault(x => x.YearMonth == current.ToString("yyyyMM"));
             if (budget != null)
             {
+                int overlappingDays;
                 if (current.ToString("yyyyMM") == start.ToString("yyyyMM"))
                 {
-                    var overlappingDays = DateTime.DaysInMonth(start.Year, start.Month) - start.Day + 1;
+                    overlappingDays = DateTime.DaysInMonth(start.Year, start.Month) - start.Day + 1;
 
-                    totalBudget += GetDailyBudget(current, budget) * overlappingDays;
+                    // totalBudget += GetDailyBudget(current, budget) * overlappingDays;
                 }
                 else if (current.ToString("yyyyMM") == end.ToString("yyyyMM"))
                 {
-                    var overlappingDays = end.Day;
-                    totalBudget += GetDailyBudget(current, budget) * overlappingDays;
+                    overlappingDays = end.Day;
+                    // totalBudget += GetDailyBudget(current, budget) * overlappingDays;
                 }
                 else
                 {
-                    var overlappingDays = DateTime.DaysInMonth(current.Year, current.Month);
-                    totalBudget += GetDailyBudget(current, budget) * overlappingDays;
+                    overlappingDays = DateTime.DaysInMonth(current.Year, current.Month);
+                    // totalBudget += GetDailyBudget(current, budget) * overlappingDays;
                 }
+
+                totalBudget += GetDailyBudget(current, budget) * overlappingDays;
             }
 
             current = current.AddMonths(1);
