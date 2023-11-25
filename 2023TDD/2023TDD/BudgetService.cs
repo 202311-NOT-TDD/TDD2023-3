@@ -42,12 +42,12 @@ public class BudgetService
             {
                 var queryDays = DateTime.DaysInMonth(start.Year, start.Month) - start.Day + 1;
 
-                var budget = budgets.FirstOrDefault(x => x.YearMonth == $"{start.Year}{start.Month.ToString("00")}");
+                var budget = budgets.FirstOrDefault(x => x.YearMonth == $"{current.Year}{current.Month.ToString("00")}");
                 totalBudget += GetDailyBudget(start, budget) * queryDays;
             }
             else if (current.ToString("yyyyMM") == end.ToString("yyyyMM"))
             {
-                var budget = budgets.FirstOrDefault(x => x.YearMonth == $"{end.Year}{end.Month.ToString("00")}");
+                var budget = budgets.FirstOrDefault(x => x.YearMonth == $"{current.Year}{current.Month.ToString("00")}");
                 totalBudget += GetDailyBudget(end, budget) * end.Day;
             }
             else
