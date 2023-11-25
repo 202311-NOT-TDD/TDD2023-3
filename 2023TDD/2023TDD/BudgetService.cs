@@ -52,7 +52,8 @@ public class BudgetService
                 }
                 else
                 {
-                    overlappingDays = DateTime.DaysInMonth(current.Year, current.Month);
+                    overlappingDays = (budget.LastDay() - budget.FirstDay()).Days + 1;
+                    // overlappingDays = DateTime.DaysInMonth(current.Year, current.Month);
                 }
 
                 totalBudget += budget.GetDailyBudget() * overlappingDays;
