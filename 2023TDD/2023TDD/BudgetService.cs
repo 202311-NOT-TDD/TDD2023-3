@@ -45,11 +45,11 @@ public class BudgetService
                 {
                     var queryDays = DateTime.DaysInMonth(start.Year, start.Month) - start.Day + 1;
 
-                    totalBudget += GetDailyBudget(start, budget) * queryDays;
+                    totalBudget += GetDailyBudget(current, budget) * queryDays;
                 }
                 else if (current.ToString("yyyyMM") == end.ToString("yyyyMM"))
                 {
-                    totalBudget += GetDailyBudget(end, budget) * end.Day;
+                    totalBudget += GetDailyBudget(current, budget) * end.Day;
                 }
                 else
                 {
