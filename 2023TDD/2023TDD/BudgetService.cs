@@ -18,6 +18,29 @@ public class Period
 
     public DateTime End { get; private set; }
     public DateTime Start { get; private set; }
+
+    public int OverlappingDays(Budget budget)
+    {
+        DateTime overlappingEnd;
+        DateTime overlappingStart;
+        if (budget.YearMonth == Start.ToString("yyyyMM"))
+        {
+            overlappingEnd = budget.LastDay();
+            overlappingStart = Start;
+        }
+        else if (budget.YearMonth == End.ToString("yyyyMM"))
+        {
+            overlappingEnd = End;
+            overlappingStart = budget.FirstDay();
+        }
+        else
+        {
+            overlappingEnd = budget.LastDay();
+            overlappingStart = budget.FirstDay();
+        }
+
+        return (overlappingEnd - overlappingStart).Days + 1;
+    }
 }
 
 public class BudgetService
@@ -53,7 +76,7 @@ public class BudgetService
             var budget = budgets.FirstOrDefault(x => x.YearMonth == current.ToString("yyyyMM"));
             if (budget != null)
             {
-                var overlappingDays = OverlappingDays(new Period(start, end), budget);
+                var overlappingDays = new Period(start, end).OverlappingDays(budget);
 
                 totalBudget += budget.GetDailyBudget() * overlappingDays;
             }
@@ -62,29 +85,6 @@ public class BudgetService
         }
 
         return totalBudget;
-    }
-
-    private static int OverlappingDays(Period period, Budget budget)
-    {
-        DateTime overlappingEnd;
-        DateTime overlappingStart;
-        if (budget.YearMonth == period.Start.ToString("yyyyMM"))
-        {
-            overlappingEnd = budget.LastDay();
-            overlappingStart = period.Start;
-        }
-        else if (budget.YearMonth == period.End.ToString("yyyyMM"))
-        {
-            overlappingEnd = period.End;
-            overlappingStart = budget.FirstDay();
-        }
-        else
-        {
-            overlappingEnd = budget.LastDay();
-            overlappingStart = budget.FirstDay();
-        }
-
-        return (overlappingEnd - overlappingStart).Days + 1;
     }
 }
 
