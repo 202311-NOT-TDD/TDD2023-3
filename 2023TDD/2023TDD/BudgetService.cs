@@ -56,23 +56,12 @@ public class BudgetService
             return budgets.FirstOrDefault(x => x.YearMonth == $"{start.Year}{start.Month.ToString("00")}").GetDailyBudget() * queryDays;
         }
 
-        var current = start;
-
         var totalBudget = 0m;
 
         var period = new Period(start, end);
         foreach (var budget in budgets)
         {
-            // }
-            // while (current < new DateTime(end.Year, end.Month, 1).AddMonths(1))
-            // {
-            //     var budget = budgets.FirstOrDefault(x => x.YearMonth == current.ToString("yyyyMM"));
-            //     if (budget != null)
-            //     {
             totalBudget += budget.OverlappingAmount(period);
-            // }
-            //
-            // current = current.AddMonths(1);
         }
 
         return totalBudget;
