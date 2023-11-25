@@ -31,9 +31,9 @@ public class BudgetService
         var totalBudget = 0;
 
         while (current < new DateTime(end.Year, end.Month, 1).AddMonths(1))
-            // while (current <= end || (current.Month == end.Month))
         {
-            if (start.Year == end.Year && start.Month == end.Month)
+            if (start.ToString("yyyyMM") == end.ToString("yyyyMM"))
+                // if (start.Year == end.Year && start.Month == end.Month)
             {
                 var queryDays = end.Day - start.Day + 1;
                 totalBudget += GetDailyBudget(start, budgets) * queryDays;
