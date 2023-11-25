@@ -19,9 +19,8 @@ public class Period
     private DateTime End { get; set; }
     private DateTime Start { get; set; }
 
-    public int OverlappingDays(Budget budget)
+    public int OverlappingDays(Period another)
     {
-        var another = new Period(budget.FirstDay(), budget.LastDay());
         var overlappingEnd = End < another.End
             ? End
             : another.End;
@@ -66,7 +65,7 @@ public class BudgetService
             var budget = budgets.FirstOrDefault(x => x.YearMonth == current.ToString("yyyyMM"));
             if (budget != null)
             {
-                var overlappingDays = new Period(start, end).OverlappingDays(budget);
+                var overlappingDays = new Period(start, end).OverlappingDays(new Period(budget.FirstDay(), budget.LastDay()));
 
                 totalBudget += budget.GetDailyBudget() * overlappingDays;
             }
