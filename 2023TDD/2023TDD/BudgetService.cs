@@ -38,21 +38,21 @@ public class BudgetService
 
         while (current < new DateTime(end.Year, end.Month, 1).AddMonths(1))
         {
+            var budget = budgets.FirstOrDefault(x => x.YearMonth == $"{current.Year}{current.Month.ToString("00")}");
             if (current.ToString("yyyyMM") == start.ToString("yyyyMM"))
             {
                 var queryDays = DateTime.DaysInMonth(start.Year, start.Month) - start.Day + 1;
 
-                var budget = budgets.FirstOrDefault(x => x.YearMonth == $"{current.Year}{current.Month.ToString("00")}");
                 totalBudget += GetDailyBudget(start, budget) * queryDays;
             }
             else if (current.ToString("yyyyMM") == end.ToString("yyyyMM"))
             {
-                var budget = budgets.FirstOrDefault(x => x.YearMonth == $"{current.Year}{current.Month.ToString("00")}");
+                // var budget = budgets.FirstOrDefault(x => x.YearMonth == $"{current.Year}{current.Month.ToString("00")}");
                 totalBudget += GetDailyBudget(end, budget) * end.Day;
             }
             else
             {
-                var budget = budgets.FirstOrDefault(x => x.YearMonth == $"{current.Year}{current.Month.ToString("00")}");
+                // var budget = budgets.FirstOrDefault(x => x.YearMonth == $"{current.Year}{current.Month.ToString("00")}");
                 totalBudget += GetDailyBudget(current, budget) * DateTime.DaysInMonth(current.Year, current.Month);
             }
 
