@@ -34,7 +34,7 @@ public class BudgetService
 
         var current = start;
 
-        var totalBudget = 0;
+        var totalBudget = 0m;
 
         while (current < new DateTime(end.Year, end.Month, 1).AddMonths(1))
         {
@@ -80,9 +80,9 @@ public class Budget
         return DateTime.ParseExact(YearMonth, "yyyyMM", null);
     }
 
-    public int GetDailyBudget()
+    public decimal GetDailyBudget()
     {
-        return Amount / Days();
+        return Amount / (decimal)Days();
     }
 
     public DateTime LastDay()
