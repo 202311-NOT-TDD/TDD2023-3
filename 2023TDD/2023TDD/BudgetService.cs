@@ -26,18 +26,19 @@ public class BudgetService
 
         var budgets = _budgetRepo.GetAll();
 
+        if (start.ToString("yyyyMM") == end.ToString("yyyyMM"))
+        {
+            var queryDays = end.Day - start.Day + 1;
+            return GetDailyBudget(start, budgets) * queryDays;
+        }
+
         var current = start;
 
         var totalBudget = 0;
 
         while (current < new DateTime(end.Year, end.Month, 1).AddMonths(1))
         {
-            if (start.ToString("yyyyMM") == end.ToString("yyyyMM"))
-            {
-                var queryDays = end.Day - start.Day + 1;
-                totalBudget += GetDailyBudget(start, budgets) * queryDays;
-            }
-            else if (current.ToString("yyyyMM") == start.ToString("yyyyMM"))
+            if (current.ToString("yyyyMM") == start.ToString("yyyyMM"))
             {
                 var queryDays = DateTime.DaysInMonth(start.Year, start.Month) - start.Day + 1;
 
