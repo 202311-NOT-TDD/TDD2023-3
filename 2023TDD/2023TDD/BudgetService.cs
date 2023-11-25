@@ -2,7 +2,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 #endregion
 
@@ -50,11 +49,11 @@ public class BudgetService
 
         var budgets = _budgetRepo.GetAll();
 
-        if (start.ToString("yyyyMM") == end.ToString("yyyyMM"))
-        {
-            var queryDays = end.Day - start.Day + 1;
-            return budgets.FirstOrDefault(x => x.YearMonth == $"{start.Year}{start.Month.ToString("00")}").GetDailyBudget() * queryDays;
-        }
+        // if (start.ToString("yyyyMM") == end.ToString("yyyyMM"))
+        // {
+        //     var queryDays = end.Day - start.Day + 1;
+        //     return budgets.FirstOrDefault(x => x.YearMonth == $"{start.Year}{start.Month.ToString("00")}").GetDailyBudget() * queryDays;
+        // }
 
         var totalBudget = 0m;
 
