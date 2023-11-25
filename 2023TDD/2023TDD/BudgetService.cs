@@ -52,7 +52,8 @@ public class BudgetService
             }
             else
             {
-                totalBudget += GetDailyBudget(current, budgets.FirstOrDefault(x => x.YearMonth == $"{current.Year}{current.Month.ToString("00")}")) * DateTime.DaysInMonth(current.Year, current.Month);
+                var budget = budgets.FirstOrDefault(x => x.YearMonth == $"{current.Year}{current.Month.ToString("00")}");
+                totalBudget += GetDailyBudget(current, budget) * DateTime.DaysInMonth(current.Year, current.Month);
             }
 
             current = current.AddMonths(1);
