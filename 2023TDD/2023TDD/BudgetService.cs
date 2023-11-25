@@ -43,7 +43,7 @@ public class BudgetService
 
                 totalBudget += GetDailyBudget(start, budgets) * queryDays;
             }
-            else if (current.Year == end.Year && current.Month == end.Month)
+            else if (current.ToString("yyyyMM") == end.ToString("yyyyMM"))
             {
                 totalBudget += GetDailyBudget(end, budgets) * end.Day;
             }
