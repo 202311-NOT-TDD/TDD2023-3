@@ -66,7 +66,8 @@ public class BudgetService
 
     private static int GetDailyBudget(DateTime budgetTime, Budget budget)
     {
-        return budget.Amount / DateTime.DaysInMonth(budgetTime.Year, budgetTime.Month);
+        var daysInMonth = DateTime.DaysInMonth(budgetTime.Year, budgetTime.Month);
+        return budget.Amount / daysInMonth;
     }
 }
 
