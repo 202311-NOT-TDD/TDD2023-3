@@ -26,33 +26,33 @@ public class BudgetService
 
         var budgets = _budgetRepo.GetAll();
 
-        var queryTime = start;
+        var current = start;
 
         var totalBudget = 0;
 
-        while (queryTime <= end || (queryTime.Month == end.Month))
+        while (current <= end || (current.Month == end.Month))
         {
             if (start.Year == end.Year && start.Month == end.Month)
             {
                 var queryDays = end.Day - start.Day + 1;
                 totalBudget += GetDailyBudget(start, budgets) * queryDays;
             }
-            else if (queryTime.Year == start.Year && queryTime.Month == start.Month)
+            else if (current.Year == start.Year && current.Month == start.Month)
             {
                 var queryDays = DateTime.DaysInMonth(start.Year, start.Month) - start.Day + 1;
 
                 totalBudget += GetDailyBudget(start, budgets) * queryDays;
             }
-            else if (queryTime.Year == end.Year && queryTime.Month == end.Month)
+            else if (current.Year == end.Year && current.Month == end.Month)
             {
                 totalBudget += GetDailyBudget(end, budgets) * end.Day;
             }
             else
             {
-                totalBudget += GetDailyBudget(queryTime, budgets) * DateTime.DaysInMonth(queryTime.Year, queryTime.Month);
+                totalBudget += GetDailyBudget(current, budgets) * DateTime.DaysInMonth(current.Year, current.Month);
             }
 
-            queryTime = queryTime.AddMonths(1);
+            current = current.AddMonths(1);
         }
 
         return totalBudget;
