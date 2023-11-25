@@ -33,12 +33,11 @@ public class BudgetService
         while (current < new DateTime(end.Year, end.Month, 1).AddMonths(1))
         {
             if (start.ToString("yyyyMM") == end.ToString("yyyyMM"))
-                // if (start.Year == end.Year && start.Month == end.Month)
             {
                 var queryDays = end.Day - start.Day + 1;
                 totalBudget += GetDailyBudget(start, budgets) * queryDays;
             }
-            else if (current.Year == start.Year && current.Month == start.Month)
+            else if (current.ToString("yyyyMM") == start.ToString("yyyyMM"))
             {
                 var queryDays = DateTime.DaysInMonth(start.Year, start.Month) - start.Day + 1;
 
