@@ -64,33 +64,33 @@ public class Budget
     public int Amount { get; set; }
     public string YearMonth { get; set; }
 
-    public Period CreatePeriod()
-    {
-        return new Period(FirstDay(), LastDay());
-    }
-
-    public DateTime FirstDay()
-    {
-        return DateTime.ParseExact(YearMonth, "yyyyMM", null);
-    }
-
-    public decimal GetDailyBudget()
-    {
-        return Amount / (decimal)Days();
-    }
-
-    public DateTime LastDay()
-    {
-        return DateTime.ParseExact(YearMonth + Days(), "yyyyMMdd", null);
-    }
-
     public decimal OverlappingAmount(Period period)
     {
         return GetDailyBudget() * period.OverlappingDays(CreatePeriod());
     }
 
+    private Period CreatePeriod()
+    {
+        return new Period(FirstDay(), LastDay());
+    }
+
     private int Days()
     {
         return DateTime.DaysInMonth(FirstDay().Year, FirstDay().Month);
+    }
+
+    private DateTime FirstDay()
+    {
+        return DateTime.ParseExact(YearMonth, "yyyyMM", null);
+    }
+
+    private decimal GetDailyBudget()
+    {
+        return Amount / (decimal)Days();
+    }
+
+    private DateTime LastDay()
+    {
+        return DateTime.ParseExact(YearMonth + Days(), "yyyyMMdd", null);
     }
 }
