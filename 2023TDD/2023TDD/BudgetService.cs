@@ -43,9 +43,9 @@ public class BudgetService
             {
                 if (current.ToString("yyyyMM") == start.ToString("yyyyMM"))
                 {
-                    var queryDays = DateTime.DaysInMonth(start.Year, start.Month) - start.Day + 1;
+                    var overlappingDays = DateTime.DaysInMonth(start.Year, start.Month) - start.Day + 1;
 
-                    totalBudget += GetDailyBudget(current, budget) * queryDays;
+                    totalBudget += GetDailyBudget(current, budget) * overlappingDays;
                 }
                 else if (current.ToString("yyyyMM") == end.ToString("yyyyMM"))
                 {
