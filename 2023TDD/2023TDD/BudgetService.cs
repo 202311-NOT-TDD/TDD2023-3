@@ -63,15 +63,9 @@ public class BudgetService
         return totalBudget;
     }
 
-    private static int GetDailyBudget(DateTime budgetTime, Budget? budget)
+    private static int GetDailyBudget(DateTime budgetTime, Budget budget)
     {
-        if (budget == null)
-        {
-            return 0;
-        }
-
-        var dailyBudget = budget.Amount / DateTime.DaysInMonth(budgetTime.Year, budgetTime.Month);
-        return dailyBudget;
+        return budget.Amount / DateTime.DaysInMonth(budgetTime.Year, budgetTime.Month);
     }
 }
 
