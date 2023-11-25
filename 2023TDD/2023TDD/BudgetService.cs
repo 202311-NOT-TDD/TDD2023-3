@@ -16,15 +16,15 @@ public class Period
         End = end;
     }
 
-    public DateTime End { get; private set; }
-    public DateTime Start { get; private set; }
+    private DateTime End { get; set; }
+    private DateTime Start { get; set; }
 
     public int OverlappingDays(Budget budget)
     {
-        DateTime overlappingEnd = End < budget.LastDay()
+        var overlappingEnd = End < budget.LastDay()
             ? End
             : budget.LastDay();
-        DateTime overlappingStart = Start > budget.FirstDay()
+        var overlappingStart = Start > budget.FirstDay()
             ? Start
             : budget.FirstDay();
 
