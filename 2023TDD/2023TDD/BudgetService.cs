@@ -47,7 +47,8 @@ public class BudgetService
             }
             else if (current.ToString("yyyyMM") == end.ToString("yyyyMM"))
             {
-                totalBudget += GetDailyBudget(end, budgets.FirstOrDefault(x => x.YearMonth == $"{end.Year}{end.Month.ToString("00")}")) * end.Day;
+                var budget = budgets.FirstOrDefault(x => x.YearMonth == $"{end.Year}{end.Month.ToString("00")}");
+                totalBudget += GetDailyBudget(end, budget) * end.Day;
             }
             else
             {
