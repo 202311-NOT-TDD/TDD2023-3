@@ -26,7 +26,7 @@ public class BudgetService
 
         var budgets = _budgetRepo.GetAll();
 
-        var queryTime = new DateTime(start.Year, start.Month, start.Day);
+        var queryTime = start;
 
         var totalBudget = 0;
 
