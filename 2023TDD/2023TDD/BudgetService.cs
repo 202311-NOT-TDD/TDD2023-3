@@ -66,7 +66,8 @@ public class BudgetService
 
     private static int GetDailyBudget(DateTime budgetTime, Budget budget)
     {
-        var daysInMonth = DateTime.DaysInMonth(budgetTime.Year, budgetTime.Month);
+        var firstDayOfBudget = DateTime.ParseExact(budget.YearMonth, "yyyyMM", null);
+        var daysInMonth = DateTime.DaysInMonth(firstDayOfBudget.Year, firstDayOfBudget.Month);
         return budget.Amount / daysInMonth;
     }
 }
